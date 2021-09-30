@@ -3,21 +3,21 @@
 #define n 4
 
 struct player {
-  char nombre [50];
-  int puntos[3];
-}jugador[n], temp;
+  char name [50];
+  int points[3];
+}player[n], temp;
 
-char salida[15];
+char output[15];
 FILE *out;
 
 int main(){
-    //Variables para el ordenamiento
+    //Sorting variables
     int i,j;
-    //INGRESO DE DATOS
-    printf("INGRESE INFORMACION DE %d JUGADORES: \n", n);
+    //DATA ENTRY
+    printf("WRITE %d PLAYERS INFORMATION: \n", n);
     for(i=0;i<n;i++){
-        printf("Ingrese nombre y puntos: ");
-        scanf("%s %d", jugador[i].nombre, jugador[i].puntos);
+        printf("Write name and points: ");
+        scanf("%s %d", player[i].name, player[i].points);
         printf("\n");
     }
 
@@ -26,41 +26,41 @@ int main(){
     {
         for(j=0;j<n-1;j++)
         {
-            if(*jugador[j].puntos>*jugador[j+1].puntos)
+            if(*player[j].points>*player[j+1].points)
             {
-                temp=jugador[j];
-                jugador[j]=jugador[j+1];
-                jugador[j+1] = temp;
+                temp=player[j];
+                player[j]=player[j+1];
+                player[j+1] = temp;
             }
         }
     }
 
-    //IMPRESION DE LA CLASIFICACIÓN
-    printf("CLASIFICACIÓN JUGADORES DEL TRONCOS F.C: \n");
+    //PRINTING STANDINGS
+    printf("CRACKS F.C PLAYER STANDINGS: \n");
     for(i=n-1;i>=0;i--){
-        printf("|%s %d\n",jugador[i].nombre,*jugador[i].puntos);
+        printf("|%s %d\n",player[i].name,*player[i].points);
     }
 
-    //GUARDAR EN EL ARCHIVO
-    printf("\nDeme el nombre del archivo de salida \n");
-    scanf("%s",salida);
+    //SAVING FILE
+    printf("\nWrite output file: \n");
+    scanf("%s",output);
 
-    out = fopen(salida,"w");
+    out = fopen(output,"w");
     if(out == NULL)
     {
-        printf("ERROR EN LA APERTURA \n");
+        printf("ERROR OPENING FILE \n");
         exit(1);
     }
     else
     {
-      //IMPRIMIR LA CLASIFICACIÓN
-      fprintf(out, "CLASIFICACIÓN JUGADORES DEL TRONCOS F.C: \n");
+      //PRINTING STANDINGS ON FILE
+      fprintf(out, "CRACKS F.C PLAYER STANDINGS: \n");
       for(i=n-1;i>=0;i--){
-          fprintf(out, "|%s %d\n",jugador[i].nombre,*jugador[i].puntos);
+          fprintf(out, "|%s %d\n",player[i].name,*player[i].points);
       }
 
       fflush(out);
       fclose(out);
     }
-    printf("Se ha guardado correctamente en el archivo\n");
+    printf("Successfully saved to file\n");
 }
