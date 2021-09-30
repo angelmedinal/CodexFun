@@ -8,12 +8,7 @@ struct player {
 }jugador[n], temp;
 
 char salida[15];
-char datos[15];
-FILE *in;
 FILE *out;
-
-//op1: n veces preguntar nombre y puntos
-//op2: hacerlo en archivo de texto como 23-repo2-p2.c
 
 int main(){
     //Variables para el ordenamiento
@@ -23,12 +18,10 @@ int main(){
     for(i=0;i<n;i++){
         printf("Ingrese nombre y puntos: ");
         scanf("%s %d", jugador[i].nombre, jugador[i].puntos);
-        /*printf("Ingrese puntos: ");
-        scanf("%d", jugador[i].puntos);*/
         printf("\n");
     }
 
-    //ORDENAMIENTO POR MÁS PUNTOS EN BURBUJA
+    //BUBBLE SORT
     for(i=1;i<n;i++)
     {
         for(j=0;j<n-1;j++)
@@ -43,7 +36,7 @@ int main(){
     }
 
     //IMPRESION DE LA CLASIFICACIÓN
-    printf("CLASIFICACIÓN JUGADORES DEL ANCELOTTI F.C: \n");
+    printf("CLASIFICACIÓN JUGADORES DEL TRONCOS F.C: \n");
     for(i=n-1;i>=0;i--){
         printf("|%s %d\n",jugador[i].nombre,*jugador[i].puntos);
     }
@@ -61,7 +54,7 @@ int main(){
     else
     {
       //IMPRIMIR LA CLASIFICACIÓN
-      fprintf(out, "CLASIFICACIÓN JUGADORES DEL ANCELOTTI F.C: \n");
+      fprintf(out, "CLASIFICACIÓN JUGADORES DEL TRONCOS F.C: \n");
       for(i=n-1;i>=0;i--){
           fprintf(out, "|%s %d\n",jugador[i].nombre,*jugador[i].puntos);
       }
